@@ -107,7 +107,7 @@ async def handle_message(message_text: str) -> str:
     return response
 
 async def send_message(recipient_id: str, text: str):
-    url = 'https://graph.facebook.com/v11.0/me/messages'
+    url = 'https://graph.facebook.com/v20.0/me/messages'
     headers = {
         'Content-Type': 'application/json'
     }
