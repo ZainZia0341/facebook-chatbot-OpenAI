@@ -1,0 +1,46 @@
+service: ChatbotFacebookIntegration
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.11
+  profile: default
+  environment:
+    OPENAI_API_KEY: ${env:OPENAI_API_KEY}
+    FB_PAGE_ACCESS_TOKEN: ${env:FB_PAGE_ACCESS_TOKEN}
+    VERIFY_TOKEN: ${env:VERIFY_TOKEN}
+    PINECONE_API_KEY: ${env:PINECONE_API_KEY}
+    PINECONE_INDEX_NAME: ${env:PINECONE_INDEX_NAME}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - logs:CreateLogGroup
+        - logs:CreateLogStream
+        - logs:PutLogEvents
+      Resource: "*"
+
+plugins:
+  - serverless-python-requirements
+  - serverless-dotenv-plugin
+custom:
+  pythonRequirements:
+    dockerizePip: non-linux
+
+package:
+  exclude:
+    - "**/*"
+  include:
+    - "*.py"
+    - "langchain"
+    - "requests"
+    - "langchain_pinecone"
+    - "langchain_openai"
+
+functions:
+  webhookHandler:
+    handler: handler.webhook_handler
+    events:
+      - http:
+          path: /webhook
+          method: any

@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "serverless-python-requirements": "^6.1.0"
+  },
+  "devDependencies": {
+    "graceful-fs": "^4.2.11",
+    "serverless-dotenv-plugin": "^6.0.0"
+  }
+}

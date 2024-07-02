@@ -1,0 +1,13 @@
+prefix=E:/Projects working/facebook_Integration/lambdaTesting/Library
+exec_prefix=E:/Projects working/facebook_Integration/lambdaTesting/Library
+libdir=E:/Projects working/facebook_Integration/lambdaTesting/Library/lib
+sharedlibdir=E:/Projects working/facebook_Integration/lambdaTesting/Library/lib
+includedir=E:/Projects working/facebook_Integration/lambdaTesting/Library/include
+
+Name: zlib
+Description: zlib compression library
+Version: 1.2.13
+
+Requires:
+Libs: -L${libdir} -L${sharedlibdir} -lz
+Cflags: -I${includedir}
